@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xohan Mart - Kids Clothing Store Pakistan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .gradient-hero {
+      background: linear-gradient(135deg, #FFF5F5 0%, #FFF0F6 50%, #E6FCFF 100%);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between custom-scrollbar">
+
+  <!-- Top Notification Bar -->
+  <div class="bg-rose-500 text-white text-xs md:text-sm font-medium py-2 px-4 text-center tracking-wide flex items-center justify-center space-x-2 shadow-sm">
+    <span>🚚 Free Delivery Nationwide on orders over PKR 3,000!</span>
+    <span class="hidden sm:inline">|</span>
+    <span class="hidden sm:inline">📞 WhatsApp Orders: 0314-6728042</span>
+  </div>
+
+  <!-- Main Navigation -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-100 sticky top-0 z-40 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center space-x-2 group">
+        <div class="w-10 h-10 rounded-2xl bg-rose-500 flex items-center justify-center text-white text-xl font-black shadow-md group-hover:scale-105 transition-transform">
+          X
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl font-black tracking-tight text-slate-900 leading-none">XOHAN<span class="text-rose-500">MART</span></span>
+          <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase mt-0.5">Kids Collection</span>
+        </div>
+      </a>
+
+      <!-- Desktop Search Bar -->
+      <div class="hidden md:flex flex-1 max-w-md mx-8">
+        <div class="relative w-full">
+          <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search frocks, rompers, tees..." class="w-full bg-slate-100 text-sm pl-10 pr-4 py-2.5 rounded-full border-none focus:ring-2 focus:ring-rose-500 focus:bg-white transition-all text-slate-800 placeholder-slate-400 outline-none">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-3">
+        <button onclick="openModal('sizeGuideModal')" class="hidden sm:flex items-center space-x-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-full transition">
+          <span>📏</span>
+          <span>Size Guide</span>
+        </button>
+
+        <button onclick="toggleCartDrawer()" class="relative bg-rose-50 hover:bg-rose-100 text-rose-600 px-4 py-2 rounded-full text-sm font-bold transition flex items-center space-x-2">
+          <span class="text-base">🛍️</span>
+          <span>Cart</span>
+          <span id="cartCount" class="bg-rose-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Search Bar -->
+    <div class="md:hidden px-4 pb-3">
+      <div class="relative w-full">
+        <input type="text" id="mobileSearchInput" oninput="filterProductsMobile()" placeholder="Search kids clothing..." class="w-full bg-slate-100 text-sm pl-10 pr-4 py-2 rounded-full outline-none focus:ring-2 focus:ring-rose-500">
+        <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="gradient-hero py-12 md:py-20 px-4 sm:px-6 border-b border-rose-100/50 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="space-y-6 text-center md:text-left">
+        <div class="inline-flex items-center space-x-2 bg-rose-100 border border-rose-200 text-rose-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+          <span>✨ Premium Kids Wear</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+          Soft, Cute & Stylish Outfits for Your Little Ones
+        </h1>
+        <p class="text-slate-600 text-base sm:text-lg max-w-xl mx-auto md:mx-0">
+          Discover high-quality 100% breathable cotton clothes for infants, toddlers, and kids across Pakistan. Cash on Delivery nationwide!
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3">
+          <a href="#productsSection" class="w-full sm:w-auto bg-rose-500 hover:bg-rose-600 text-white font-extrabold px-8 py-3.5 rounded-full shadow-lg shadow-rose-500/25 transition text-center">
+            Shop New Collection 🎈
+          </a>
+          <a href="https://wa.me/923146728042?text=Hi%20Xohan%20Mart!%20I%20have%20an%20inquiry%20about%20kids%20clothing." target="_blank" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-6 py-3.5 rounded-full shadow-md transition flex items-center justify-center space-x-2">
+            <span>💬</span>
+            <span>WhatsApp Us</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="relative flex justify-center">
+        <div class="w-full max-w-md bg-white p-6 rounded-3xl shadow-xl border border-slate-100 relative">
+          <div class="aspect-square bg-gradient-to-br from-amber-50 to-rose-50 rounded-2xl flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+            <span class="text-8xl mb-2 animate-bounce">🧸</span>
+            <span class="font-extrabold text-slate-800 text-xl">Xohan Mart Specials</span>
+            <span class="text-xs text-slate-500 mt-1">Starting from PKR 1,150</span>
+            <div class="absolute top-3 right-3 bg-rose-500 text-white font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow">
+              New 2026
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <h2 class="text-xl font-extrabold text-slate-900 mb-6 flex items-center space-x-2">
+      <span>🛍️</span>
+      <span>Browse Categories</span>
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="categoryContainer">
+      <!-- Generated via JS -->
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="productsSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 border-b border-slate-200 pb-4">
+      <div>
+        <h2 class="text-2xl font-black text-slate-900">Featured Clothing</h2>
+        <p class="text-xs text-slate-500 mt-0.5">Showing comfortable dresses, sets, and everyday outfits</p>
+      </div>
+      
+      <!-- Filter Controls -->
+      <div class="flex items-center space-x-2 overflow-x-auto pb-2 sm:pb-0">
+        <button onclick="setFilter('all')" class="filter-btn active bg-slate-900 text-white text-xs font-bold px-4 py-2 rounded-full transition whitespace-nowrap" data-cat="all">All Items</button>
+        <button onclick="setFilter('baby')" class="filter-btn bg-slate-100 text-slate-600 hover:bg-slate-200 text-xs font-bold px-4 py-2 rounded-full transition whitespace-nowrap" data-cat="baby">Baby (0-12M)</button>
+        <button onclick="setFilter('toddler')" class="filter-btn bg-slate-100 text-slate-600 hover:bg-slate-200 text-xs font-bold px-4 py-2 rounded-full transition whitespace-nowrap" data-cat="toddler">Toddler (1-4Y)</button>
+        <button onclick="setFilter('boys')" class="filter-btn bg-slate-100 text-slate-600 hover:bg-slate-200 text-xs font-bold px-4 py-2 rounded-full transition whitespace-nowrap" data-cat="boys">Boys</button>
+        <button onclick="setFilter('girls')" class="filter-btn bg-slate-100 text-slate-600 hover:bg-slate-200 text-xs font-bold px-4 py-2 rounded-full transition whitespace-nowrap" data-cat="girls">Girls</button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Dynamic Products Inserted Here -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden py-16 text-center">
+      <span class="text-5xl">🔍</span>
+      <h3 class="text-lg font-bold text-slate-800 mt-3">No products found</h3>
+      <p class="text-sm text-slate-500 mt-1">Try resetting your search or selecting another category.</p>
+      <button onclick="setFilter('all')" class="mt-4 bg-rose-500 text-white text-xs font-bold px-5 py-2.5 rounded-full">Reset Filters</button>
+    </div>
+  </section>
+
+  <!-- Pakistan COD Notice Banner -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
+    <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+      <div class="space-y-2 text-center md:text-left">
+        <div class="inline-flex items-center space-x-2 bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold">
+          <span>🇵🇰 Nationwide Delivery</span>
+        </div>
+        <h3 class="text-2xl font-bold">Cash on Delivery Across Pakistan</h3>
+        <p class="text-slate-300 text-sm max-w-xl">Order with full peace of mind. Pay safely when your package arrives at your doorstep via TCS, Leopards, or Trax courier services.</p>
+      </div>
+      <button onclick="toggleCartDrawer()" class="bg-rose-500 hover:bg-rose-600 text-white font-extrabold px-6 py-3 rounded-full text-sm transition whitespace-nowrap">
+        Order via Cart / WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 mt-12 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="space-y-3">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-xl bg-rose-500 flex items-center justify-center text-white text-lg font-black">X</div>
+          <span class="text-xl font-black text-slate-900">XOHAN<span class
